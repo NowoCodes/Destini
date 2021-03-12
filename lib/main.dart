@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'story_brain.dart';
-
+import 'constant.dart';
 
 void main() => runApp(Destini());
 
@@ -8,6 +8,7 @@ class Destini extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
+      debugShowCheckedModeBanner: false,
       home: StoryPage(),
     );
   }
@@ -49,20 +50,21 @@ class _StoryPageState extends State<StoryPage> {
               ),
               Expanded(
                 flex: 2,
-                child: FlatButton(
+                child: ElevatedButton(
                   onPressed: () {
                     //Choice 1 made by user.
                     setState(() {
                       storyBrain.nextStory(1);
                     });
                   },
-                  color: Colors.red,
-                  child: Text(
-                    storyBrain.getChoice1(),
-                    style: TextStyle(
-                      fontSize: 20.0,
-                    ),
+                  // color: Colors.red,
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.red,
+                    shadowColor: Colors.green,
+                    elevation: 9.0,
+                    textStyle: kButtonTextStyle,
                   ),
+                  child: Text(storyBrain.getChoice1()),
                 ),
               ),
               SizedBox(
@@ -72,20 +74,20 @@ class _StoryPageState extends State<StoryPage> {
                 flex: 2,
                 child: Visibility(
                   visible: storyBrain.buttonShouldBeVisible(),
-                  child: FlatButton(
+                  child: ElevatedButton(
                     onPressed: () {
                       //Choice 2 made by user.
                       setState(() {
                         storyBrain.nextStory(2);
                       });
                     },
-                    color: Colors.blue,
-                    child: Text(
-                      storyBrain.getChoice2(),
-                      style: TextStyle(
-                        fontSize: 20.0,
-                      ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.blue,
+                      shadowColor: Colors.green,
+                      elevation: 9.0,
+                      textStyle: kButtonTextStyle,
                     ),
+                    child: Text(storyBrain.getChoice2()),
                   ),
                 ),
               ),
@@ -96,4 +98,3 @@ class _StoryPageState extends State<StoryPage> {
     );
   }
 }
-
