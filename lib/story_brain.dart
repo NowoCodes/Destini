@@ -72,7 +72,6 @@ class StoryBrain {
   void restart() {
     _storyNumber = 0;
   }
-  
 
   bool buttonShouldBeVisible() {
     //You could also just check if (_storyNumber < 3)
